@@ -1,58 +1,46 @@
-//SON mis sobrenombres
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const path = require('path');
-const fs = require('fs');
 const app = express();
+const ip = '107.20.205.40';
+const port = 3000;
+const fs = require('fs');
 
-const port = 3000; //Puerto
-
-// Configuración de las solicitudes del Json
+// Configuración de middleware para analizar el cuerpo de las solicitudes
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Configuración de archivos estáticos
 app.use(express.static(path.join(__dirname)));
 
-
-// Configuración de conexión a MySQL en RDS
-let conexion = mysql.createConnection({
-    host: "databasegenesis.cykpjcqdi7ng.us-east-1.rds.amazonaws.com",  // Punto de enlace
-    database: "rds",   //nombre de mi base de datos                                      
-    user: "admin",    //es mi usuario                                            
-    password: "admin123"  //contraseña                                         
+// Configuración de conexión a MySQL con un pool
+let pool = mysql.createPool({
+    host: "databasegenesis.cykpjcqdi7ng.us-east-1.rds.amazonaws.com",
+    database: "rds",
+    user: "admin",
+    password: "admin123",
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
-// Conexión a la base de datos
-conexion.connect((err) => {
-    if (err) {
-        console.error('Error de conexión a la base de datos: ' + err.stack);
-        return;
-    }
-    console.log('Conectado a la base de datos.');
-});
-
-
-
-// Envia los datos de mi formulario
+// Manejo de la solicitud POST del formulario
 app.post('/submit-form', (req, res) => {
-    const {
-       nombreapellido, edad, correo, numero, descripcion
-    } = req.body;
+    const { nombre, apellidos, celular, gmail, descripcion } = req.body;
 
-    // Insertamos los datos 
+   // Insertamos los datos 
     const query = 'INSERT INTO contactanos (nombreapellido, edad, correo, numero, descripcion ) VALUES (?, ?, ?, ?, ?)';
-    
-    conexion.query(query, [
-        nombreapellido, edad, correo, numero, descripcion
-    ], (err, result) => {
+
+    pool.query(query, [nombreapellido, edad, correo, numero, descripcion], (err, result) => {
         if (err) {
             console.error('Error al insertar datos: ' + err.stack);
             res.status(500).send('Ocurrió un error al procesar tu consulta.');
             return;
         }
 
-        // Si esta bien nos envia  la pagina de contactanos.html
-        const htmlPath = path.join(__dirname, 'Html','contactanos.html');
+        // Redirige a la página de confirmación o éxito
+        const htmlPath = path.join(__dirname, 'Html', 'index.html');
         fs.readFile(htmlPath, 'utf8', (err, data) => {
             if (err) {
                 console.error('Error al leer el archivo HTML: ' + err);
@@ -64,16 +52,11 @@ app.post('/submit-form', (req, res) => {
     });
 });
 
-
-
-
-// Servir el archivo HTML principal para el formulario
+// Servir el archivo HTML principal
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Html','contactanos.html'));
+    res.sendFile(path.join(__dirname, 'Html', 'index.html'));
 });
 
-
-// Escuchar en el puerto especificado
 app.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}`);
+    console.log(`Servidor escuchando en http://${ip}:${port}`);
 });
