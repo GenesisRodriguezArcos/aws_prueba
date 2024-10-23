@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactanos</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/styles/contactanos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!-- Incluye SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+    <nav class="nav-var">
+        <a onclick="principal()">Principal</a>
+        <a onclick="odsPrincipal()">ODS</a>
+        <a onclick="contacto()">Contáctanos</a>
+        <a onclick="nuestraOds();">Nuestra ODS</a>
+        <button onclick="registro()" class="btn-register">Regístrese</button>
+      </nav>
+
+    <section>
+        <div class="row">
+            <h1>Nuestro equipo</h1>
+        </div>
+
+        <div class="row">
+            <div class="columna">
+                <div class="carta">
+                    <div class="image-dev">
+                        <img src="/images/Cute-Programmer-Girl-Illustration-62340250-1.png" alt="Dev 1">
+                    </div>
+                    <h3>Developer 1</h3>
+                    <p>Front end Dev</p>
+                    <div class="iconos">
+                        <a href="#">
+                            <i class='bx bxl-github'></i>
+                        </a>
+                        <a href="#">
+                            <i class='bx bxl-linkedin'></i>
+                        </a>
+                        <a href="#">
+                            <i class='bx bxl-instagram'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columna">
+                <div class="carta">
+                    <div class="image-dev">
+                        <img src="/images/andre.prof.jpg" alt="Dev 2">
+                    </div>
+                    <h3>Developer 2</h3>
+                    <p>Front end Dev</p>
+                    <div class="iconos">
+                        <a href="#">
+                            <i class='bx bxl-github'></i>
+                        </a>
+                        <a href="#">
+                            <i class='bx bxl-linkedin'></i>
+                        </a>
+                        <a href="#">
+                            <i class='bx bxl-instagram'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columna">
+                <div class="carta">
+                    <div class="image-dev">
+                        <img src="/images/girldev.png" alt="Dev 3">
+                    </div>
+                    <h3>Developer 3</h3>
+                    <p>Front end Dev</p>
+                    <div class="iconos">
+                        <a href="#">
+                            <i class='bx bxl-github'></i>
+                        </a>
+                        <a href="#">
+                            <i class='bx bxl-linkedin'></i>
+                        </a>
+                        <a href="#">
+                            <i class='bx bxl-instagram'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Formulario de contacto -->
+        <form class="form" id="contactForm" action="/submit-form" method="POST"> <!-- Sunmit envia los datos a la base de datos  -->
+            <h2>Escríbenos</h2>
+            <p>
+                "Si no tienes acceso a agua potable en tu comunidad, cuéntanos. Tu información nos ayudará a encontrar
+                soluciones y mejorar el acceso a este recurso esencial."
+            </p>
+
+            <label for="nombreapellido">Nombre y Apellido:</label>
+            <input type="text" id="nombreapellido" name="nombreapellido" class="box" required>
+
+            <label for="edad">¿Cuál es tu edad?</label>
+            <input type="number" id="edad" name="edad" class="box" required>
+
+            <label for="correo">Correo Electrónico</label>
+            <input type="email" id="correo" name="correo" class="box" required>
+
+            <label for="numero">Número de teléfono</label>
+            <input type="tel" id="numero" name="numero" class="box" required>
+
+            <label for="descripcion">Escribe tu mensaje:</label>
+            <textarea class="box" id="descripcion" name="descripcion" cols="30" rows="10" required></textarea>
+
+            <input type="submit" value="Enviar" class="submit">
+        </form>
+
+        <div class="info">
+            <img src="/images/mensaje.jpg" class="mensaje" alt="Mensaje">
+            <div class="location">
+                <div class="icons">
+                    <img src="/images/gps.jpg" alt="Ubicación">
+                    <p>Antigua Panamericana Sur Km 144, San Vicente de Cañete 15701</p>
+                </div>
+
+                <div class="icons">
+                    <img src="/images/telefono.png" alt="Teléfono">
+                    <p>+51 971 948 802</p>
+                </div>
+
+                <div class="icons">
+                    <img src="/images/gmail.png" alt="Email">
+                    <p>test@gmail.com</p>
+                </div>
+
+                <div class="social">
+                    <img src="/images/facebook.jpg" alt="Facebook">
+                    <img src="/images/twitter.jpg" alt="Twitter">
+                    <img src="/images/ins.png" alt="Instagram">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vincula el script de validación -->
+    <script src="/ctanos.js"></script>
+    <script src="/function.js"></script>
+</body>
+
+</html>

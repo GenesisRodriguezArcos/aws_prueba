@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family: 'Raleway', sans-serif;
+    padding: 80px 0;
+    background-image: url("/images/img6.jpg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+}
+
+.main{
+    margin: auto;
+    width: 100%;
+    max-width: 1000px;
+    background-color: rgba(187, 206, 206, 0.329);
+    overflow: hidden;
+    padding: .3em;
+    border-radius: 1em;
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    box-shadow: 7px 13px 37px #babae6;
+    
+}
+
+.main_img{
+    margin: auto;
+    padding-top: 120px;
+    width: 120%;
+    height: 99%;
+}
+
+.main_contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5em;
+    padding: 3em .7em;
+    text-align: center;
+}
+
+.main_title{
+    font-size: 2.3rem;
+    color: #000000;
+
+
+}
+
+.main_paragraph{
+    margin: .3em 0;
+    color: #000000;
+
+}
+
+.parrafo{
+    color: #000000;
+}
+.main_form{
+    display: grid;
+    justify-items: center;
+    gap: 1.5em;
+}
+
+.container {
+    font-size: 20px;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+.main_input{
+    width: 80%;
+    max-width: 500px;
+    border: none;
+    padding: 1em;
+    font: inherit;
+    border-radius: .6em;
+}
+
+.main_input_send{
+    background-color: #c5140e;
+    color: #fff;
+    font-weight: 600;
+}
+.main_input:hover{
+    background-color: #fff;
+    color: #b8bbb4;
+}
+#check{
+    margin-right: 10px;
+}
+
+.line-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: rgb(255, 247, 247);
+}
+
+.circle {
+    padding: 0 10px;
+    font-size: 24px;
+}
+
+.main_icon{
+    width: 30px;
+    height: 30px;
+}
+
+.main_social{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    grid-auto-columns: max-content;
+    gap: 1em;
+}
+
+.main_link{
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: .6em 1.5em;
+}
+
+.main_link:hover{
+    background-color: #fff;
+}
